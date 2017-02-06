@@ -21,24 +21,20 @@ DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(50) NOT NULL,
-  `read` char(1) NOT NULL,
+  `hasRead` char(1) NOT NULL,
   `userId` int(11) NOT NULL,
+  `createdOn` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_message_user` (`userId`),
   CONSTRAINT `fk-message-user` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
--- Dumping data for table demo.message: ~8 rows (approximately)
+-- Dumping data for table demo.message: ~3 rows (approximately)
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` (`id`, `text`, `read`, `userId`) VALUES
-	(1, 'Attachment1 missing on Form1.', 'N', 1),
-	(2, 'Attachment2 format is invalid on Form2.', 'N', 1),
-	(3, 'Enrollment is pending State approval.', 'N', 2),
-	(4, 'Enrollment is Submitted', 'N', 2),
-	(5, 'Form5 is Complete', 'N', 2),
-	(6, 'Form2 is still in Draft', 'N', 1),
-	(7, 'Form3 needs to printed and signed', 'N', 1),
-	(12, 'Form is too bad.', 'N', 1);
+INSERT INTO `message` (`id`, `text`, `hasRead`, `userId`, `createdOn`) VALUES
+	(16, 'Form A is invalid.', 'N', 1, '2017-02-06 10:48:29'),
+	(17, 'Form A needs additional attachments', 'N', 1, '2017-02-06 10:54:19'),
+	(18, 'Form B submitted.', 'N', 1, '2017-02-06 11:20:50');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 
 
